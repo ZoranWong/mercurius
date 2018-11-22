@@ -38,14 +38,15 @@ class CreateThirdPartyPlatformUsersTable extends Migration
                 'province' => null,
                 'city' => null])
                 ->comment('所属区域');
-            $table->unsignedInteger('user_id')
-                ->default('')
+            $table->unsignedInteger('member_id')
+                ->default(0)
                 ->comment('用户id（会员）');
             $table->enum('sex', ['UNKNOWN', 'MALE', 'FEMALE'])
                 ->default('UNKNOWN')
                 ->comment('性别');
-
             $table->timestamps();
+            $table->softDeletes();
+            $table->comment = '第三方平台用户信息';
         });
     }
 
