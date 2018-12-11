@@ -14,12 +14,16 @@ class CreateStoresTable extends Migration
     public function up()
     {
         /**
-         * stores table指的是平台商店可以对应多个shop记录，shops指一般个体商店（可以是独立店铺或者平台商店的连锁/分销/代理店铺）
+         * stores店铺
          * */
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 16)->comment('店铺名称');
+            $table->boolean('is_chain_store')->default(false)->comment('是否连锁店铺');
+            $table->enum('type')->comment('店铺类型');
             $table->timestamps();
-            $table->comment = 'stores table指的是平台商店可以对应多个shop记录，shops指一般个体商店（可以是独立店铺或者平台商店的连锁/分销/代理店铺）';
+            $table->softDeletes();
+            $table->comment = 'stores店铺';
         });
     }
 

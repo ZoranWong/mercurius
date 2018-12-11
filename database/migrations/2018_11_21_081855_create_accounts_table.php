@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUserAccountsTable extends Migration
+class CreateAccountsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUserAccountsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_accounts', function (Blueprint $table) {
+        Schema::create('accounts', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id')->comment('用户id');
+            $table->unsignedInteger('store_user_id')->comment('用户id');
             $table->unsignedInteger('member_card_id')->comment('会员卡id');
             $table->float('balance', 16, 4)
                 ->default(0)
@@ -47,7 +47,7 @@ class CreateUserAccountsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->comment = '用户账户表单';
-            $table->unique(['user_id', 'member_card_id']);
+            $table->unique(['store_user_id', 'member_card_id']);
         });
     }
 

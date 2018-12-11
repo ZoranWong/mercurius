@@ -38,6 +38,7 @@ class CreateCardsTable extends Migration
                 'least_cost' => 0])
                 ->comment('卡券信息');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

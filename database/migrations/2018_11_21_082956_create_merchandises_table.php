@@ -15,7 +15,9 @@ class CreateMerchandisesTable extends Migration
     {
         Schema::create('merchandises', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 16)->comment('产品名称');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

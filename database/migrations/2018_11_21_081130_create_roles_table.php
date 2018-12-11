@@ -15,12 +15,14 @@ class CreateRolesTable extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug', 64)
+            $table->string('slug', 16)
                 ->default('')
                 ->comment('角色标示符');
-            $table->string(64, 'name')
+
+            $table->string( 'name', 16)
                 ->default('')
                 ->comment('角色名称');
+
             $table->timestamps();
             $table->softDeletes();
             $table->comment = '角色表单';

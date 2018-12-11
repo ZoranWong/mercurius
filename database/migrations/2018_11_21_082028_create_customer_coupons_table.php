@@ -19,6 +19,12 @@ class CreateCustomerCouponsTable extends Migration
                 ->index()
                 ->comment('优惠券id');
 
+            $table->unsignedInteger('store_id')
+                ->default(0)
+                ->comment('店铺id');
+            $table->unsignedInteger('customer_id')
+                ->comment('客户ID');
+
             $table->string('code', 32)
                 ->unique()
                 ->comment('优惠券优惠码');
@@ -34,10 +40,11 @@ class CreateCustomerCouponsTable extends Migration
 
             $table->timestamp('start_at')
                 ->default(null)
-                ->comment('');
+                ->comment('开始时间');
+
             $table->timestamp('end_at')
                 ->default(null)
-                ->comment('');
+                ->comment('结束时间');
 
             $table->json('card_info')
                 ->default([
@@ -46,16 +53,14 @@ class CreateCustomerCouponsTable extends Migration
                     'least_cost' => 0,
                     'gift' => '',
                     'default_detail' => ''
-                ])
-                ->comment('');
+                ])->comment('卡券信息');
 
             $table->json('extend_info')
-                ->default([
-                    'merchandises' => [],
-                    'activities' => []
-                ])
-                ->comment('');
+                ->default(['merchandises' => [], 'activities' => []])
+                ->comment('拓展信息');
+
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
