@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateBankAccountsTable extends Migration
 {
@@ -24,8 +25,12 @@ class CreateBankAccountsTable extends Migration
                 ->comment('状态：false - 未绑定成功，true - 绑定成功');
             $table->timestamps();
             $table->softDeletes();
-            $table->comment = '用户银行卡绑定表单';
+            $table->index('store_user_id');
+            $table->index('bank_account');
+            $table->index('mobile');
+            $table->index('has_bind');
         });
+        DB::statement('ALTER TABLE `bank_accounts` COMMENT "用户银行卡绑定表单"');
     }
 
     /**

@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection ALL */
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateMemberCardsTable extends Migration
 {
@@ -19,13 +20,13 @@ class CreateMemberCardsTable extends Migration
                 ->default('')
                 ->comment('背景图片');
 
-            $table->unsignedInteger('shop_id')
+            $table->unsignedInteger('chain_store_id')
                 ->default(0)
-                ->comment('店铺会员时填写');
+                ->comment('连锁店铺门店');
 
             $table->unsignedInteger('store_id')
                 ->default(0)
-                ->comment('平台商城会员卡');
+                ->comment('店铺');
 
             $table->enum('type', MEMBER_CARD_TYPE_COLLECTION)
                 ->default(STORE_MEMBER_CARD)
@@ -42,11 +43,13 @@ class CreateMemberCardsTable extends Migration
                 ->comment('积分规则说明');
 
             $table->json('custom_fields')
-                ->default([])
+                ->nullable()
+                ->default(null)
                 ->comment('自定义会员信息类目，会员卡激活后显示,包含name_type,name和url字段');
 
             $table->json('bonus_rule')
-                ->default([])
+                ->nullable()
+                ->default(null)
                 ->comment('积分规则：
                     cost_money_unit	否	int	消费金额。以元为单位。
                     increase_bonus	否	int	对应增加的积分。
@@ -59,7 +62,11 @@ class CreateMemberCardsTable extends Migration
 
             $table->timestamps();
             $table->softDeletes();
+            $table->index('chain_store_id');
+            $table->index('store_id');
+            $table->index('type');
         });
+        DB::statement('ALTER TABLE `member_cards` COMMENT "会员卡"');
     }
 
     /**

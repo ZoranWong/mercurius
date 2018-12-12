@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateStoresTable extends Migration
 {
@@ -20,11 +21,13 @@ class CreateStoresTable extends Migration
             $table->increments('id');
             $table->string('name', 16)->comment('店铺名称');
             $table->boolean('is_chain_store')->default(false)->comment('是否连锁店铺');
-            $table->enum('type')->comment('店铺类型');
+            $table->enum('type', STORE_TYPE_COLLECTION)
+                ->default(ONLINE_SHOPPING_MALL)
+                ->comment('店铺类型');
             $table->timestamps();
             $table->softDeletes();
-            $table->comment = 'stores店铺';
         });
+        DB::statement('ALTER TABLE `stores` COMMENT "店铺表"');
     }
 
     /**

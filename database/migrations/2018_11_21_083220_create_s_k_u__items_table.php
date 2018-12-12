@@ -5,7 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\DB;
 
-class CreateMerchandisesTable extends Migration
+class CreateSKUItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,22 +14,21 @@ class CreateMerchandisesTable extends Migration
      */
     public function up()
     {
-        Schema::create('merchandises', function (Blueprint $table) {
+        Schema::create('s_k_u_items', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('code', 10)->unique()->comment('产品编号');
             $table->unsignedInteger('store_id')->comment('店铺ID');
-            $table->string('name', 16)->comment('产品名称');
+            $table->unsignedInteger('merchandise_id')->comment('商品ID');
+            $table->string('code', 12)->comment('编码');
+            $table->json('spec')->default(null)->comment('规格');
             $table->float('origin_price')->default(0)->comment('原价');
             $table->float('sell_price')->default(0)->comment('售价');
             $table->float('member_price')->default(0)->comment('会员价');
-            $table->string('preview', 256)->default('')->comment('简介');
-            $table->text('detail')->nullable()->default(null)->comment('详情');
             $table->timestamps();
             $table->softDeletes();
+            $table->index('merchandise_id');
             $table->index('code');
-            $table->index('store_id');
         });
-        DB::statement('ALTER TABLE `merchandises` COMMENT "商品表"');
+        DB::statement('ALTER TABLE `s_k_u_items` COMMENT "sku表单"');
     }
 
     /**
@@ -39,6 +38,6 @@ class CreateMerchandisesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('merchandises');
+        Schema::dropIfExists('merchandise_s_k_u');
     }
 }

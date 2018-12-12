@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateOrderItemsTable extends Migration
 {
@@ -30,6 +31,7 @@ class CreateOrderItemsTable extends Migration
                 ->default(0)
                 ->comment('单价');
             $table->json('detail')
+                ->nullable()
                 ->default(null)
                 ->comment('产品信息');
             $table->enum('status', ORDER_STATUS_COLLECTION)
@@ -45,6 +47,7 @@ class CreateOrderItemsTable extends Migration
             $table->index('merchandise_sku_id');
             $table->index('status');
         });
+        DB::statement('ALTER TABLE `order_items` COMMENT "订单详情表"');
     }
 
     /**

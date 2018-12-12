@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateCardsTable extends Migration
 {
@@ -18,8 +19,8 @@ class CreateCardsTable extends Migration
             $table->string('card_id', 32)
                 ->default('')
                 ->comment('微信卡券id（cardId）');
-            $table->enum('card_type', [])
-                ->default('')
+            $table->enum('card_type', CARD_TYPE_COLLECTION)
+                ->default(DISCOUNT_CARD)
                 ->comment('卡券类型');
             $table->unsignedInteger('stock_num')
                 ->default(0)
@@ -28,18 +29,21 @@ class CreateCardsTable extends Migration
                 ->default(0)
                 ->comment('发行数量');
             $table->json('base_info')
-                ->default([])
+                ->nullable()
+                ->default(null)
                 ->comment('卡券基本信息');
             $table->json('card_info')
-                ->default([
+                ->nullable()
+                ->default(null)
+                ->comment("[
                 'discount' => 1,
                 'gift' => '',
                 'reduce_cost' => 0,
-                'least_cost' => 0])
-                ->comment('卡券信息');
+                'least_cost' => 0]");
             $table->timestamps();
             $table->softDeletes();
         });
+        DB::statement('ALTER TABLE `cards` COMMENT "优惠券"');
     }
 
     /**

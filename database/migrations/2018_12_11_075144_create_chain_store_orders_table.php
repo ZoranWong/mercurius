@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateChainStoreOrdersTable extends Migration
 {
@@ -23,6 +24,7 @@ class CreateChainStoreOrdersTable extends Migration
             $table->index('order_id');
             $table->unique(['chain_store_id', 'order_id']);
         });
+        DB::statement('ALTER TABLE `chain_store_orders` COMMENT "连锁店铺订单关系"');
     }
 
     /**

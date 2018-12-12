@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateAccountsTable extends Migration
 {
@@ -46,9 +47,11 @@ class CreateAccountsTable extends Migration
                 ->comment('累计已使用积分');
             $table->timestamps();
             $table->softDeletes();
-            $table->comment = '用户账户表单';
             $table->unique(['store_user_id', 'member_card_id']);
+            $table->index('store_user_id');
+            $table->index('member_card_id');
         });
+        DB::statement('ALTER TABLE `accounts` COMMENT "用户账户表单"');
     }
 
     /**

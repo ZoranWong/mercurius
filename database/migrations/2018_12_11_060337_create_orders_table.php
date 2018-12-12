@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateOrdersTable extends Migration
 {
@@ -39,8 +40,13 @@ class CreateOrdersTable extends Migration
                 ->comment('优惠金额');
             $table->timestamps();
             $table->softDeletes();
-            $table->index(['order_no', 'trade_no', 'outer_trade_no', 'status', 'type']);
+            $table->index('order_no');
+            $table->index('trade_no');
+            $table->index('outer_trade_no');
+            $table->index( 'status');
+            $table->index('type');
         });
+        DB::statement('ALTER TABLE `orders` COMMENT "订单表"');
     }
 
     /**

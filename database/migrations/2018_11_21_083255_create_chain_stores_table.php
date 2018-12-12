@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateChainStoresTable extends Migration
 {
@@ -29,8 +30,8 @@ class CreateChainStoresTable extends Migration
             $table->float('balance_money')->default(0)->comment('余额');
             $table->timestamps();
             $table->softDeletes();
-            $table->comment = '连锁店铺';
         });
+        DB::statement('ALTER TABLE `chain_stores` COMMENT "连锁店铺"');
     }
 
     /**

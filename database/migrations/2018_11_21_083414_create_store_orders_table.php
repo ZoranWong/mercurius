@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateStoreOrdersTable extends Migration
 {
@@ -23,6 +24,7 @@ class CreateStoreOrdersTable extends Migration
             $table->index('order_id');
             $table->unique(['store_id', 'order_id']);
         });
+        DB::statement('ALTER TABLE `store_orders` COMMENT "店铺订单关系表"');
     }
 
     /**

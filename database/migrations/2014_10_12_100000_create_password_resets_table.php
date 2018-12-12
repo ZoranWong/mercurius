@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreatePasswordResetsTable extends Migration
 {
@@ -21,8 +22,8 @@ class CreatePasswordResetsTable extends Migration
                 ->index()
                 ->comment('密码重设token');
             $table->timestamps();
-            $table->comment = '密码重置表单';
         });
+        DB::statement('ALTER TABLE `password_resets` COMMENT "密码重置表单"');
     }
 
     /**

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateOrderTicketsTable extends Migration
 {
@@ -20,11 +21,11 @@ class CreateOrderTicketsTable extends Migration
             $table->float('discount_amount')->comment('优惠券金额');
             $table->timestamps();
             $table->softDeletes();
-            $table->comment = '订单优惠券使用表';
             $table->index('order_id');
             $table->index('ticket_id');
             $table->unique(['order_id', 'ticket_id']);
         });
+        DB::statement('ALTER TABLE `order_tickets` COMMENT "订单优惠券使用表"');
     }
 
     /**

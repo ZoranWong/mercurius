@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Utils\SnowFlake;
+use Carbon\Carbon;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +16,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        Carbon::setLocale(config('app.timezone'));
     }
 
     /**
@@ -24,5 +27,12 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->singleton('snowFlake', function () {
+            return new SnowFlake(
+                config('app.business_id'),
+                config('app.data_center_id'),
+                config('app.machine_id')
+            );
+        });
     }
 }
