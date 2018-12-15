@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;

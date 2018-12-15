@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/manage/merchant",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Manage/Merchant\\Providers\\Manage/MerchantServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Manage/Merchant\\": ""
+        }
+    }
+}

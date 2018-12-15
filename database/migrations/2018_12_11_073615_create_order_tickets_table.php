@@ -1,4 +1,4 @@
-<?php
+<?php /** @noinspection ALL */
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,15 +15,11 @@ class CreateOrderTicketsTable extends Migration
     public function up()
     {
         Schema::create('order_tickets', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->unsignedBigInteger('order_id')->comment('订单ID');
             $table->unsignedBigInteger('ticket_id')->comment('优惠券ID');
             $table->float('discount_amount')->comment('优惠券金额');
-            $table->timestamps();
             $table->softDeletes();
-            $table->index('order_id');
-            $table->index('ticket_id');
-            $table->unique(['order_id', 'ticket_id']);
+            $table->primary(['order_id', 'ticket_id']);
         });
         DB::statement('ALTER TABLE `order_tickets` COMMENT "订单优惠券使用表"');
     }

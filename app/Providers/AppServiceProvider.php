@@ -26,12 +26,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(\Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class);
+        }
         //
         $this->app->singleton('snowFlake', function () {
             return new SnowFlake(
-                config('app.business_id'),
-                config('app.data_center_id'),
-                config('app.machine_id')
+                config('database.business_id'),
+                config('database.data_center_id'),
+                config('database.machine_id')
             );
         });
     }

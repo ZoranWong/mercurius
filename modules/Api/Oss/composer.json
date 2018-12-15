@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/api/oss",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Api/Oss\\Providers\\Api/OssServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Api/Oss\\": ""
+        }
+    }
+}

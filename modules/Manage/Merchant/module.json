@@ -1,0 +1,14 @@
+{
+    "name": "Manage/Merchant",
+    "alias": "manage/merchant",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Manage/Merchant\\Providers\\Manage/MerchantServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

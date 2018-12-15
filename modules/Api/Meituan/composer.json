@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/api/meituan",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Api/Meituan\\Providers\\Api/MeituanServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Api/Meituan\\": ""
+        }
+    }
+}

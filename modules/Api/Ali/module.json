@@ -1,0 +1,14 @@
+{
+    "name": "Api/Ali",
+    "alias": "api/ali",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Api/Ali\\Providers\\Api/AliServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

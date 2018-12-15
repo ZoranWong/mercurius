@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/api/eleme",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Api/Eleme\\Providers\\Api/ElemeServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Api/Eleme\\": ""
+        }
+    }
+}

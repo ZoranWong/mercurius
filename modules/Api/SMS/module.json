@@ -1,0 +1,14 @@
+{
+    "name": "Api/SMS",
+    "alias": "api/sms",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Api/SMS\\Providers\\Api/SMSServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
