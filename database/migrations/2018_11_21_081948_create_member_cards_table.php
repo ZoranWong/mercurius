@@ -15,9 +15,6 @@ class CreateMemberCardsTable extends Migration
     {
         Schema::create('member_cards', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('bg_image_url', 1024)
-                ->default('')
-                ->comment('背景图片');
 
             $table->unsignedInteger('shop_id')
                 ->default(0)
@@ -26,6 +23,9 @@ class CreateMemberCardsTable extends Migration
             $table->unsignedInteger('store_id')
                 ->default(0)
                 ->comment('平台商城会员卡');
+
+            $table->unsignedInteger('customer_id')
+                ->comment('客户ID');
 
             $table->unsignedTinyInteger('type')
                 ->default(0)
@@ -41,10 +41,6 @@ class CreateMemberCardsTable extends Migration
                 ->default('')
                 ->comment('积分规则说明');
 
-            $table->json('custom_fields')
-                ->default([])
-                ->comment('自定义会员信息类目，会员卡激活后显示,包含name_type,name和url字段');
-
             $table->json('bonus_rule')
                 ->default([])
                 ->comment('积分规则：
@@ -56,8 +52,9 @@ class CreateMemberCardsTable extends Migration
                     reduce_money	否	int	抵扣xx元，（这里以元为单位）
                     least_moneytouse_bonus	否	int	抵扣条件，满xx元（这里以元为单位）可用。
                     max_reduce_bonus	否	int	抵扣条件，单笔最多使用xx积分。');
-
+            $table->enum('status', MEMBER_CARD_STATUS_COLLECTION)->comment('');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -52,10 +52,13 @@ class CreateCustomerCouponsTable extends Migration
             $table->json('extend_info')
                 ->default([
                     'merchandises' => [],
-                    'activities' => []
+                    'activities' => [],
+                    'shops' => [],
+                    'stores' => []
                 ])
                 ->comment('');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

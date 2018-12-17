@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMerchandiseHistoryTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreateMerchandiseHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('merchandise_history', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('merchandise_id')->comment('产品id');
-            $table->json('merchandise_info')->default([])->comment('产品信息');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ class CreateMerchandiseHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('merchandise_history');
+        Schema::dropIfExists('categories');
     }
 }

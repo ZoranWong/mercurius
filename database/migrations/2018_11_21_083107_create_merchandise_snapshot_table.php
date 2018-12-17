@@ -15,6 +15,7 @@ class CreateMerchandiseSnapshotTable extends Migration
     {
         Schema::create('merchandise_snapshot', function (Blueprint $table) {
             $table->increments('id');
+            $table->json('merchandise_info')->default([])->comment('快照信息');
             $table->timestamps();
         });
     }
