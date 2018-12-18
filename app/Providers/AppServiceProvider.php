@@ -17,6 +17,9 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Carbon::setLocale(config('app.timezone'));
+        $this->loadViewsFrom(resource_path('views/vue'), 'vue');
+        $this->loadViewsFrom(resource_path('views/platform'), 'platform');
+
     }
 
     /**

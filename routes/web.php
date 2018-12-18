@@ -14,3 +14,5 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login', ['as' => 'platform.login', 'uses' => 'Auth\LoginController@showLoginForm']);
