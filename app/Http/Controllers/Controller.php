@@ -14,5 +14,6 @@ class Controller extends BaseController
     public function __construct()
     {
         View::share('title', 'MERCURIUS管理平台');
+        View::share('rememberMe', session('remember-me', 0));
     }
 }
