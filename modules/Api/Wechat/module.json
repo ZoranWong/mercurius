@@ -1,0 +1,14 @@
+{
+    "name": "Api/Wechat",
+    "alias": "api/wechat",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Api/Wechat\\Providers\\Api/WechatServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

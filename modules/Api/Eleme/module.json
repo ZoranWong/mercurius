@@ -1,0 +1,14 @@
+{
+    "name": "Api/Eleme",
+    "alias": "api/eleme",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Api/Eleme\\Providers\\Api/ElemeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

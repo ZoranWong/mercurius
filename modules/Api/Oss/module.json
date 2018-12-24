@@ -1,0 +1,14 @@
+{
+    "name": "Api/Oss",
+    "alias": "api/oss",
+    "description": "",
+    "keywords": [],
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\Api/Oss\\Providers\\Api/OssServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

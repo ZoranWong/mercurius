@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/api/wechat",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Api/Wechat\\Providers\\Api/WechatServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Api/Wechat\\": ""
+        }
+    }
+}

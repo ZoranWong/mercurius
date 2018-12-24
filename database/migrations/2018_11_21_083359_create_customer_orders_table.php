@@ -1,8 +1,9 @@
-<?php
+<?php /** @noinspection ALL */
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateCustomerOrdersTable extends Migration
 {
@@ -14,6 +15,7 @@ class CreateCustomerOrdersTable extends Migration
     public function up()
     {
         Schema::create('customer_orders', function (Blueprint $table) {
+<<<<<<< HEAD
             $table->increments('id');
             $table->string('order_no', 16)
                 ->unique()
@@ -66,7 +68,14 @@ class CreateCustomerOrdersTable extends Migration
                 ->comment('订单状态');
             $table->timestamps();
             $table->softDeletes();
+=======
+            $table->unsignedBigInteger('order_id')->comment('订单id');
+            $table->unsignedInteger('customer_id')->comment('客户ID');
+            $table->softDeletes();
+            $table->primary(['customer_id', 'order_id']);
+>>>>>>> 44419366de6820e7a7064fc723c19e4bb036a053
         });
+        DB::statement('ALTER TABLE `customer_orders` COMMENT "用户订单关系表"');
     }
 
     /**

@@ -1,0 +1,25 @@
+{
+    "name": "nwidart/api/ali",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Api/Ali\\Providers\\Api/AliServiceProvider"
+            ],
+            "aliases": {
+                
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Api/Ali\\": ""
+        }
+    }
+}

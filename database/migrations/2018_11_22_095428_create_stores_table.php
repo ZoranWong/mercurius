@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Support\Facades\DB;
 
 class CreateStoresTable extends Migration
 {
@@ -14,13 +15,19 @@ class CreateStoresTable extends Migration
     public function up()
     {
         /**
-         * stores table指的是平台商店可以对应多个shop记录，shops指一般个体商店（可以是独立店铺或者平台商店的连锁/分销/代理店铺）
+         * stores店铺
          * */
         Schema::create('stores', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name', 16)->comment('店铺名称');
+            $table->boolean('is_chain_store')->default(false)->comment('是否连锁店铺');
+            $table->enum('type', STORE_TYPE_COLLECTION)
+                ->default(ONLINE_SHOPPING_MALL)
+                ->comment('店铺类型');
             $table->timestamps();
-            $table->comment = 'stores table指的是平台商店可以对应多个shop记录，shops指一般个体商店（可以是独立店铺或者平台商店的连锁/分销/代理店铺）';
+            $table->softDeletes();
         });
+        DB::statement('ALTER TABLE `stores` COMMENT "店铺表"');
     }
 
     /**
