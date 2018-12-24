@@ -39,15 +39,15 @@ class CreateUsersTable extends Migration
             $table->enum('sex', ['UNKNOWN', 'MALE', 'FEMALE'])
                 ->default('UNKNOWN')
                 ->comment('性别');
-            $table->unsignedInteger('vip')
-                ->default(0)
-                ->comment('vip等级');
+            $table->enum('status', USER_STATUS_COLLECTION)
+                ->default(USER_WAIT_ACTIVE)
+                ->comment('账户状态');
             $table->string('password')->comment('密码');
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();
             $table->index('name');
-            $table->index('vip');
+            $table->index('status');
             $table->index('sex');
             $table->index('mobile');
             $table->index('email');

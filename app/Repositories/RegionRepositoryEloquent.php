@@ -25,14 +25,15 @@ class RegionRepositoryEloquent extends BaseRepository implements RegionRepositor
         return Region::class;
     }
 
-    
+
 
     /**
      * Boot up the repository, pushing criteria
+     * @throws
      */
     public function boot()
     {
         $this->pushCriteria(app(RequestCriteria::class));
     }
-    
+
 }

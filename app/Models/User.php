@@ -72,4 +72,6 @@ class User extends Model implements ContractAuthenticatable, ContractAuthorizabl
         'id', 'name', 'password', 'mobile', 'email', 'nickname', 'email_verified_at', 'sex', 'vip', 'region'
     ];
 
+    protected $hidden = ['password'];
+
 }
